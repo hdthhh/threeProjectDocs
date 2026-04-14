@@ -1,5 +1,8 @@
 {
   "name": "three-project-docs",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
   "devDependencies": {
     "vitepress": "^2.0.0-alpha.17"
   },
@@ -8,5 +11,5 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "packageManager": "npm@10.9.40"
+  "packageManager": "npm@10.9.4"
 }
