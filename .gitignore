@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+docs/public/maison_doucet_hennessy_house/
+docs/public/lexus_sc_gt500__www.vecarz.com/
+docs/public/2014__bmw_m4_f82_razor/
+docs/public/christmas_tree/
+docs/public/2013_ferrari_458_spider/
+.vscode

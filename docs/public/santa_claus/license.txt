@@ -1,0 +1,11 @@
+Model Information:
+* title:	Santa Claus
+* source:	https://sketchfab.com/3d-models/santa-claus-a7c1eb7a808c4520b60263dbaf6b46bb
+* author:	besturkan (https://sketchfab.com/besturkan)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Santa Claus" (https://sketchfab.com/3d-models/santa-claus-a7c1eb7a808c4520b60263dbaf6b46bb) by besturkan (https://sketchfab.com/besturkan) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

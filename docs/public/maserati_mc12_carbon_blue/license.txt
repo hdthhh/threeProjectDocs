@@ -1,0 +1,11 @@
+Model Information:
+* title:	Maserati MC12 Carbon Blue
+* source:	https://sketchfab.com/3d-models/maserati-mc12-carbon-blue-e1d745cec7104653b75ca24dd1e3d186
+* author:	qfep (https://sketchfab.com/xmitkogikerx)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Maserati MC12 Carbon Blue" (https://sketchfab.com/3d-models/maserati-mc12-carbon-blue-e1d745cec7104653b75ca24dd1e3d186) by qfep (https://sketchfab.com/xmitkogikerx) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

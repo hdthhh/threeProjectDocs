@@ -1,0 +1,11 @@
+Model Information:
+* title:	SnowMan
+* source:	https://sketchfab.com/3d-models/snowman-580a00bad7994fbdbd43c574f80991f4
+* author:	Mug (https://sketchfab.com/1Mug)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SnowMan" (https://sketchfab.com/3d-models/snowman-580a00bad7994fbdbd43c574f80991f4) by Mug (https://sketchfab.com/1Mug) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
