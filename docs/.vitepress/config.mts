@@ -1,31 +1,44 @@
 import { defineConfig } from 'vitepress'
+// import vue from '@vitejs/plugin-vue'
+// import path from 'path';
+import vitePluginGlsl from 'vite-plugin-glsl'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Three Project Docs",
   description: "A VitePress Site",
   base: '/threeProjectDocs/',
+  lang: 'zh-CN',
   themeConfig: {
     logo: '/vite.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '文档', link: '/markdown-examples' }
+      { text: '文档', link: '/example' }
     ],
 
     sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
-        ]
-      },
+      // {
+      //   text: 'Examples',
+      //   items: [
+      //     { text: 'Markdown Examples', link: '/markdown-examples' },
+      //     { text: 'Runtime API Examples', link: '/api-examples' },
+      //   ]
+      // },
       {
         text: '简单示例',
         items: [
           { text: 'example', link: '/example' },
-
+          { text: '简单图形', link: '/oneFile' },
+          { text: '立方体和线', link: '/twoFile' },
+          { text: '立方体轮廓', link: '/threeFile' },
+          { text: 'gui简单示例', link: '/fourFile' },
+          { text: '平面和文字', link: '/fiveFile' },
+          { text: '球性映射背景', link: '/sixFile' },
+          { text: '雾', link: '/sevenFile' },
+          { text: '光线投射', link: '/eightFile' },
+          { text: 'tween动画', link: '/nineFile' },
+          { text: '车模型导入', link: '/tenFile' },
         ]
       }
     ],
@@ -42,6 +55,10 @@ export default defineConfig({
     }
   },
   vite: {
+    plugins: [ vitePluginGlsl()],
+    // resolve: {
+    //   alias: { '@': path.resolve(__dirname, './src') }
+    // },
     build: {
       rollupOptions: {
         // 使用 external 来排除某些模块（如果需要的话）

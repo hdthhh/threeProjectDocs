@@ -10,6 +10,7 @@ import {
   Vector2,
   Vector3
 } from "./chunk-ZHIC2X2Z.js";
+import "./chunk-PZ5AY32C.js";
 
 // node_modules/three/examples/jsm/controls/OrbitControls.js
 var _changeEvent = { type: "change" };

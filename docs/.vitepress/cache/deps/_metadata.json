@@ -1,85 +1,100 @@
 {
-  "hash": "04316128",
-  "configHash": "b98cfdaa",
-  "lockfileHash": "06d07b6e",
-  "browserHash": "69b4b4e1",
+  "hash": "0b233ed3",
+  "configHash": "47fc6483",
+  "lockfileHash": "c2d2f27b",
+  "browserHash": "8ca92eb6",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "e603e574",
+      "fileHash": "2ac17a63",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "3c285029",
+      "fileHash": "0c866819",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/dist/index.js",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "83501f85",
+      "fileHash": "73b9efa5",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/dist/useFocusTrap.js",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "73a4a21d",
+      "fileHash": "feb11473",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "811fb6c3",
+      "fileHash": "3b31eb0e",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "92df36e6",
+      "fileHash": "1da274cd",
       "needsInterop": false
     },
     "three": {
       "src": "../../../../node_modules/three/build/three.module.js",
       "file": "three.js",
-      "fileHash": "99401604",
+      "fileHash": "b5a1464b",
       "needsInterop": false
     },
     "three/examples/jsm/controls/OrbitControls.js": {
       "src": "../../../../node_modules/three/examples/jsm/controls/OrbitControls.js",
       "file": "three_examples_jsm_controls_OrbitControls__js.js",
-      "fileHash": "3806d449",
+      "fileHash": "5bf6e35d",
       "needsInterop": false
     },
     "three/examples/jsm/loaders/GLTFLoader.js": {
       "src": "../../../../node_modules/three/examples/jsm/loaders/GLTFLoader.js",
       "file": "three_examples_jsm_loaders_GLTFLoader__js.js",
-      "fileHash": "b331bb85",
+      "fileHash": "1eda29cc",
       "needsInterop": false
     },
     "three/addons/loaders/DRACOLoader.js": {
       "src": "../../../../node_modules/three/examples/jsm/loaders/DRACOLoader.js",
       "file": "three_addons_loaders_DRACOLoader__js.js",
-      "fileHash": "61299024",
+      "fileHash": "5893ed40",
       "needsInterop": false
     },
     "three/examples/jsm/libs/lil-gui.module.min.js": {
       "src": "../../../../node_modules/three/examples/jsm/libs/lil-gui.module.min.js",
       "file": "three_examples_jsm_libs_lil-gui__module__min__js.js",
-      "fileHash": "d8ea92bc",
+      "fileHash": "2f51124d",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "dd106507",
+      "needsInterop": false
+    },
+    "three/examples/jsm/libs/tween.module.js": {
+      "src": "../../../../node_modules/three/examples/jsm/libs/tween.module.js",
+      "file": "three_examples_jsm_libs_tween__module__js.js",
+      "fileHash": "74f140f5",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-ZHIC2X2Z": {
-      "file": "chunk-ZHIC2X2Z.js"
-    },
     "chunk-OOESYP43": {
       "file": "chunk-OOESYP43.js"
     },
     "chunk-OSR6TB6A": {
       "file": "chunk-OSR6TB6A.js"
+    },
+    "chunk-ZHIC2X2Z": {
+      "file": "chunk-ZHIC2X2Z.js"
+    },
+    "chunk-PZ5AY32C": {
+      "file": "chunk-PZ5AY32C.js"
     }
   }
 }
