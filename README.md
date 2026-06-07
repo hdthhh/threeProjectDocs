@@ -5,5 +5,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
 
 ```
-该项目为第一次的个人three尝试项目，包括了three的基本内容的学习，灯光，各类控制器的使用，太阳系，一个房间等
+该项目为第一次的个人three尝试项目，包括了three的基本内容的学习
 ```
+
+预览地址：[点击调转](https://hdthhh.github.io/threeProjectDocs/)

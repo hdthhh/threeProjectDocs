@@ -39,6 +39,14 @@ export default defineConfig({
           { text: '光线投射', link: '/eightFile' },
           { text: 'tween动画', link: '/nineFile' },
           { text: '车模型导入', link: '/tenFile' },
+          // { text: '发光着色器', link: '/shaderFile' },
+          // { text: '地形着色器', link: '/terrainShader' },
+          // { text: '渐变色着色器', link: '/gradientShader' },
+          // { text: '雾着色器', link: '/fogShader' },
+          // { text: '鬼屋场景', link: '/hauntedHouse' },
+          // { text: '星系', link: '/galaxy' },
+          // { text: '咖啡杯烟雾', link: '/coffeeCup' },
+          // { text: '粒子着色器', link: '/particleShader' },
         ]
       }
     ],
