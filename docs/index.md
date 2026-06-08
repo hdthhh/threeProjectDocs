@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "我的three项目"
-  text: "根据three journey编制"
+  text: "threejs项目记述"
   tagline: 项目所有内容记录文档
   image:
       # 首页右边的图片

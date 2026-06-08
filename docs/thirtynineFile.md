@@ -1,0 +1,89 @@
+---
+outline: deep
+---
+
+<script setup>
+import { useData } from 'vitepress'
+import example from '../docs/components/thirtynineFile.vue'
+// import exampleSource from '../docs/components/thirtynineFile.vue?raw'
+
+
+const { site, theme, page, frontmatter } = useData()
+
+</script>
+
+<div style="height:500px;width:100%;">
+   <ClientOnly><example></example></ClientOnly>
+</div>
+
+## code
+```vue
+<script setup>
+//////////////////
+// 立方体，材质，网格
+const geometry = new THREE.BoxGeometry(4, 4, 4)
+const material = new THREE.MeshBasicMaterial({
+  color: 'white',
+  // wireframe: true,
+})
+const cube = new THREE.Mesh(geometry, material)
+cube.position.set(0, 10, 0)
+// cube.rotateX(Math.PI/3)
+scene.add(cube)
+
+const dm = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), new THREE.MeshBasicMaterial({ color: 'gray' }))
+dm.position.set(0, 0, 0)
+dm.rotation.x = -Math.PI / 2
+scene.add(dm)
+
+const world = new CANNON.World()
+world.gravity.set(0, -9.82, 0)
+
+const groundMaterial = new CANNON.Material('groundMaterial')
+groundMaterial.friction = 0.1 // 摩擦力
+groundMaterial.restitution = 0.5 // 弹力
+// groundMaterial.frictionStiffness = 0.5 // 摩擦力刚度
+// groundMaterial.restitutionStiffness = 0.5 // 弹力刚度
+
+const groundBody = new CANNON.Body({
+  mass: 0, // 为0表示地面不受重力影响
+  shape: new CANNON.Plane(),
+  material: groundMaterial,
+})
+world.addBody(groundBody)
+groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(- 1, 0, 0), Math.PI * 0.5);
+
+const boxmaterial = new CANNON.Material('box')
+const boxShape = new CANNON.Box(new CANNON.Vec3(2, 2, 2))
+const boxBody = new CANNON.Body({
+  mass: 1,
+  position: new CANNON.Vec3(0, 10, 0),
+  material: boxmaterial,
+  shape: boxShape,
+})
+world.addBody(boxBody)
+
+
+onUnmounted(() => {
+  cancelAnimationFrame(animationId)
+  scene.traverse(obj => {
+    if (obj.geometry) obj.geometry.dispose()
+    if (obj.material) {
+      if (Array.isArray(obj.material)) {
+        obj.material.forEach(m => m.dispose())
+      } else {
+        obj.material.dispose()
+      }
+    }
+    if (obj.texture) obj.texture.dispose()
+  })
+  scene.clear()
+  render.forceContextLoss()
+  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
+  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
+})
+</script>
+
+```
+
+
