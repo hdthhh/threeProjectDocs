@@ -9,8 +9,8 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
-import { Water } from "three/examples/jsm/objects/Water";
-import { Sky } from "three/examples/jsm/objects/Sky";
+import { Water } from "three/examples/jsm/objects/Water.js";
+import { Sky } from "three/examples/jsm/objects/Sky.js";
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 
 const ddd = ref(null)

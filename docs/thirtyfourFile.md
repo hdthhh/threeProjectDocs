@@ -19,7 +19,7 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-import { Water } from "three/examples/jsm/objects/Water";
+import { Water } from "three/examples/jsm/objects/Water.js";
     
 // 右 左 上 下 前 后  如不够，颜色透明，无颜色
 // const redmaterial = new THREE.MeshBasicMaterial({ color: 'red' })

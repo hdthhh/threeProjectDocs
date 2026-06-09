@@ -19,8 +19,8 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-import { Water } from "three/examples/jsm/objects/Water";
-import { Sky } from "three/examples/jsm/objects/Sky";
+import { Water } from "three/examples/jsm/objects/Water.js";
+import { Sky } from "three/examples/jsm/objects/Sky.js";
     
 function animate() {
   // 让水流动

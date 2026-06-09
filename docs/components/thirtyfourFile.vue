@@ -10,7 +10,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
-import { Water } from "three/examples/jsm/objects/Water";
+import { Water } from "three/examples/jsm/objects/Water.js";
 
 const ddd = ref(null)
 const a = ref(null)
