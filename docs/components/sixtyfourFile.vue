@@ -12,7 +12,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
 import customShaderMaterial from 'three-custom-shader-material/vanilla'
-import { SUBTRACTION, Brush, Evaluator } from 'three-bvh-csg'
+// import { SUBTRACTION, Brush, Evaluator } from 'three-bvh-csg'
 import simplexNoise2dFile from '../components/assets/glsl/simplexNoise2d.glsl'
 
 const ddd = ref(null)
@@ -53,7 +53,7 @@ camera.position.set(-10, 6, -2)
 let resizefn = null
 let gui = null
 // 渲染元素，启用动画
-onMounted(() => {
+onMounted(async() => {
   ddd.value.appendChild(render.domElement)
   animate();
   gui = new GUI({ container: a.value })
@@ -68,6 +68,16 @@ onMounted(() => {
   resizefn()
   // 根据页面大小变化而适应变化
   window.addEventListener('resize', resizefn)
+
+  const {
+    SUBTRACTION,
+    Brush,
+    Evaluator
+  } = await import('three-bvh-csg')
+  createBoard(SUBTRACTION,
+    Brush,
+    Evaluator)
+
 
 })
 onUnmounted(() => {
@@ -362,24 +372,29 @@ water.position.y = -0.1
 scene.add(water)
 
 
-const boardFill = new Brush(new THREE.BoxGeometry(11, 2, 11))
-const boardHole = new Brush(new THREE.BoxGeometry(10, 2.1, 10))
 
-// 运算类型：支持三种基本布尔运算
-// ADDITION（并集）：将两个几何体合并
-// SUBTRACTION（差集）：从第一个几何体中减去第二个几何体
-// INTERSECTION（交集）：保留两个几何体的重叠部分
+function createBoard(SUBTRACTION,
+  Brush,
+  Evaluator) {
+  const boardFill = new Brush(new THREE.BoxGeometry(11, 2, 11))
+  const boardHole = new Brush(new THREE.BoxGeometry(10, 2.1, 10))
 
-// 评估器
-const evaluator = new Evaluator()
-// 评估几何体1，评估几何体2，差集（相减）
-const board = evaluator.evaluate(boardFill, boardHole, SUBTRACTION)
-board.geometry.clearGroups()
-board.material = new THREE.MeshStandardMaterial({ color: '#ffffff', metalness: 0, roughness: 0.3 })
-board.castShadow = true
-board.receiveShadow = true
-scene.add(board)
+  // 运算类型：支持三种基本布尔运算
+  // ADDITION（并集）：将两个几何体合并
+  // SUBTRACTION（差集）：从第一个几何体中减去第二个几何体
+  // INTERSECTION（交集）：保留两个几何体的重叠部分
 
+  // 评估器
+  const evaluator = new Evaluator()
+  // 评估几何体1，评估几何体2，差集（相减）
+  const board = evaluator.evaluate(boardFill, boardHole, SUBTRACTION)
+  board.geometry.clearGroups()
+  board.material = new THREE.MeshStandardMaterial({ color: '#ffffff', metalness: 0, roughness: 0.3 })
+  board.castShadow = true
+  board.receiveShadow = true
+  scene.add(board)
+
+}
 </script>
 
 <style scoped>
