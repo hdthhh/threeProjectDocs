@@ -17,8 +17,8 @@ const { site, theme, page, frontmatter } = useData()
 </div> -->
   <Suspense>
 
-    <template #default>
-     <div style="height:500px;width:100%;position:relative;">
+ <template #default>
+  <div style="height:500px;width:100%;position:relative;">
    <ClientOnly><example></example></ClientOnly>
 </div>
     </template>

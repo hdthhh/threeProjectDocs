@@ -5,7 +5,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import * as THREE from "three";
-import { OrbitControls } from 'three/addons/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
 
 

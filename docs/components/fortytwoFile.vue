@@ -8,7 +8,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
-import { Sky } from "three/examples/jsm/objects/Sky";
+import { Sky } from "three/examples/jsm/objects/Sky.js";
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 // import jsontext from "three/examples/fonts/helvetiker_regular.typeface.json";
 import zh from 'three/examples/fonts/helvetiker_regular.typeface.json'

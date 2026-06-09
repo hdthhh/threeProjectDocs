@@ -19,7 +19,7 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-import { Sky } from "three/examples/jsm/objects/Sky";
+import { Sky } from "three/examples/jsm/objects/Sky.js";
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import zh from 'three/examples/fonts/helvetiker_regular.typeface.json'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
