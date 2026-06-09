@@ -19,8 +19,10 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
+import { OBB } from 'three/examples/jsm/math/OBB.js'
+    
 const geometry = new THREE.BoxGeometry(2, 2, 2)
 const material = new THREE.MeshBasicMaterial({
   color: 'red',
@@ -34,7 +36,7 @@ const textureLoader = new THREE.TextureLoader()
 // 创建精灵材质对象SpriteMaterial
 const spriteMaterial = new THREE.SpriteMaterial({
   // color: 0x699fab,// 设置颜色 黑色完全不显示，白色完全显示 有点像蒙版
-  map: textureLoader.load(new URL(`../assets/xh.png`, import.meta.url).href)
+  map: textureLoader.load(new URL(`/components/assets/xh.png`, import.meta.url).href)
 });
 // 创建精灵模型对象，不需要几何体geometry参数
 const sprite = new THREE.Sprite(spriteMaterial);
@@ -70,9 +72,9 @@ scene.add(ambLight, dirLight)
 
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setDecoderPath('/threeProjectDocs/draco/');
 loader.setDRACOLoader(dracoLoader);
-loader.load('racing_car/scene.gltf', gltf => {
+loader.load('/threeProjectDocs/racing_car/scene.gltf', gltf => {
   console.log(gltf);
   gltf.scene.position.set(0, 0, 0)
   gltf.scene.scale.set(0.02, 0.02, 0.02)
@@ -84,7 +86,7 @@ loader.load('racing_car/scene.gltf', gltf => {
 })
 
 let treelist = []
-loader.load('coconut_tree/scene.gltf', gltf => {
+loader.load('/threeProjectDocs/coconut_tree/scene.gltf', gltf => {
   // console.log(gltf);
   for (let i = 0; i < 10; i++) {
     const clone = gltf.scene.clone()
@@ -118,10 +120,98 @@ let vehicleSpeed = 0.1, deg = 0.5, box3, boxHelper
 const vehicleRotation = new THREE.Euler(0, 0, 0, 'YXZ');
 function move() {
   let box = group
-  let ver = new 
-// ... more code ...
+  let ver = new THREE.Vector3()
+  ver.copy(box.position)
+  if (key.w || key.s) {
+    // cube.position.x -= ((key.a ? vehicleSpeed : 0))
+    // cube.position.x += ((key.d ? vehicleSpeed : 0))
+    // box.position.z -= ((key.w ? vehicleSpeed : 0))
+    // box.position.z += ((key.s ? vehicleSpeed : 0))
+    // - (key.a ? vehicleSpeed : 0)   - (key.s ? vehicleSpeed : 0)
+
+    // key.a && cube.rotateY(THREE.MathUtils.degToRad(-deg))
+    // key.d && cube.rotateY(THREE.MathUtils.degToRad(deg))
+    key.a && (vehicleRotation.y += Math.PI / 180 * 1)
+    key.d && (vehicleRotation.y -= Math.PI / 180 * 1)
+
+    const quaternion = new THREE.Quaternion().setFromEuler(vehicleRotation);
+    const forwardVector = new THREE.Vector3(0, 0, key.w ? 1 : (key.s ? -1 : 0)).applyQuaternion(quaternion);//将Quaternion变换应用到该向量
+    // 更新车辆位置，更新车辆旋转角度
+    ver.addScaledVector(forwardVector, vehicleSpeed);//将所传入的v与s相乘所得的乘积和这个向量相加
+    // let old = new THREE.Vector3().copy(obb.center)
+    // 碰撞检测
+    // obb.center = ver
+
+    // let one = treelist.find(item => obb.intersectsOBB(item))
+    // console.log(one)
+
+    scene.remove(box3, boxHelper)
+    box3 = new THREE.Box3().setFromObject(box.children[1])
+    boxHelper = new THREE.Box3Helper(box3, 0x00ff00);
+    scene.add(box3, boxHelper)
+
+    let one = treelist.find(item => box3.intersectsBox(new THREE.Box3().setFromObject(item)))
+    if (one) {
+      console.log('碰撞')
+      // obb.center = old
+      box.position.x = qqq(box.position.x, ver.x)
+      box.position.z = qqq(box.position.z, ver.z)
+    } else {
+      box.position.copy(ver)
+      box.quaternion.copy(quaternion);
+      // console.log(forwardVector)
+      camera.position.set(box.position.x + 10, box.position.y + 10, box.position.z + 10)
+      OrbitControl.target.set(box.position.x, box.position.y, box.position.z)
+    }
+  }
+}
+// const obb = new OBB(group.position)
+
+window.addEventListener('keydown', e => {
+  if (e.code == 'ArrowLeft' || e.code == 'KeyA') {
+    // cube.translateX(1)
+    // cube.rotateY(THREE.MathUtils.degToRad(1))
+    key.a = true
+  } else if (e.code == 'ArrowRight' || e.code == 'KeyD') {
+    // cube.translateX(-1)
+    // cube.rotateY(THREE.MathUtils.degToRad(-1))
+    key.d = true
+  } else if (e.code == 'ArrowUp' || e.code == 'KeyW') {
+    // cube.translateZ(1)
+    key.w = true
+  } else if (e.code == 'ArrowDown' || e.code == 'KeyS') {
+    // cube.translateZ(-1)
+    key.s = true
+  }
+})
+window.addEventListener('keyup', e => {
+  if (e.code == 'ArrowLeft' || e.code == 'KeyA') {
+    // cube.translateX(1)
+    // cube.rotateY(THREE.MathUtils.degToRad(1))
+    key.a = false
+  } else if (e.code == 'ArrowRight' || e.code == 'KeyD') {
+    // cube.translateX(-1)
+    // cube.rotateY(THREE.MathUtils.degToRad(-1))
+    key.d = false
+  } else if (e.code == 'ArrowUp' || e.code == 'KeyW') {
+    // cube.translateZ(1)
+    key.w = false
+  } else if (e.code == 'ArrowDown' || e.code == 'KeyS') {
+    // cube.translateZ(-1)
+    key.s = false
+  }
+})
+
+function qqq(x, y) {
+  if (x > y) {
+    return x + vehicleSpeed * 2
+  } else if (x < y) {
+    return x - vehicleSpeed * 2
+  } else if (x == y) {
+    return x
+  }
+}
 </script>
 
 ```
-
 

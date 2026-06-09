@@ -120,7 +120,7 @@ scene.add(dlh2)
 // scene.background = new THREE.Color(255, 255, 255)
 
 const glftloader = new GLTFLoader()
-glftloader.load('./box.glb', (e, r) => {
+glftloader.load('/threeProjectDocs/box.glb', (e, r) => {
   console.log(e, r)
   scene.add(e.scene.children[0])
 })

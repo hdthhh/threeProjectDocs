@@ -330,7 +330,6 @@ loader.load('/threeProjectDocs/models.glb', (gltf) => {
 
 })
 function add() {
-  console.log(particles)
     gui.add(particles, 'morph0')
     gui.add(particles, 'morph1')
     gui.add(particles, 'morph2')

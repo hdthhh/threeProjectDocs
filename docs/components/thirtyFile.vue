@@ -115,9 +115,9 @@ scene.add(ambLight, dirLight)
 
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setDecoderPath('/threeProjectDocs/draco/');
 loader.setDRACOLoader(dracoLoader);
-loader.load('racing_car/scene.gltf', gltf => {
+loader.load('/threeProjectDocs/racing_car/scene.gltf', gltf => {
   console.log(gltf);
   gltf.scene.position.set(0, 0, 0)
   gltf.scene.scale.set(0.02, 0.02, 0.02)
@@ -129,7 +129,7 @@ loader.load('racing_car/scene.gltf', gltf => {
 })
 
 let treelist = []
-loader.load('coconut_tree/scene.gltf', gltf => {
+loader.load('/threeProjectDocs/coconut_tree/scene.gltf', gltf => {
   // console.log(gltf);
   for (let i = 0; i < 10; i++) {
     const clone = gltf.scene.clone()

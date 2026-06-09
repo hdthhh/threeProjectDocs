@@ -18,38 +18,60 @@ const { site, theme, page, frontmatter } = useData()
 
 ## code
 ```vue
+<template>
+  <div ref="ddd" style="width: 100%;height: 100%;"></div>
+  <div ref="blocker" id="blocker">
+    <div ref="instructions" id="instructions" @click="PointerLockControl.lock()">
+      <p style="font-size:36px">
+        Click to play
+      </p>
+      <p>
+        Move: WASD<br />
+        Jump: SPACE<br />
+        Look: MOUSE
+      </p>
+    </div>
+  </div>
+</template>
+
 <script setup>
-// 根据页面大小变化而适应变化
-window.addEventListener('resize', e => {
-  render.setSize(window.innerWidth, window.innerHeight)
-  camera.aspect = window.innerWidth / window.innerHeight
-  camera.updateProjectionMatrix()
-})
+const PointerLockControl = new PointerLockControls(camera, render.domElement)
+PointerLockControl.addEventListener('lock', function () {
+  instructions.value.style.display = 'none';
+  blocker.value.style.display = 'none';
+});
 
-
-
-
-
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
-})
+PointerLockControl.addEventListener('unlock', function () {
+  blocker.value.style.display = 'block';
+  instructions.value.style.display = '';
+});
+scene.add(PointerLockControl.getObject());
+camera.position.set(10, 10, 10)
 </script>
 
+<style scoped>
+#blocker {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(87, 87, 87, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#instructions {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>
+
 ```
-
-

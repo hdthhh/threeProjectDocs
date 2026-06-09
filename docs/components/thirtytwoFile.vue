@@ -103,21 +103,21 @@ scene.background = { color: 0xffffff }
 
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setDecoderPath('/threeProjectDocs/draco/');
 loader.setDRACOLoader(dracoLoader);
 // christmas_tree   2.5k_followers_christmas_special
-loader.load('2.5k_followers_christmas_special/scene.gltf', (gltf) => {
+loader.load('/threeProjectDocs/2.5k_followers_christmas_special/scene.gltf', (gltf) => {
   console.log(gltf)
   gltf.scene.scale.set(30, 30, 30)
   scene.add(gltf.scene)
 })
-loader.load('snowman/scene.gltf', (gltf) => {
+loader.load('/threeProjectDocs/snowman/scene.gltf', (gltf) => {
   gltf.scene.scale.set(5, 5, 5)
   gltf.scene.position.set(25, 3, 0)
   gltf.scene.rotation.y = THREE.MathUtils.degToRad(90)
   scene.add(gltf.scene)
 })
-loader.load('santa_claus/scene.gltf', (gltf) => {
+loader.load('/threeProjectDocs/santa_claus/scene.gltf', (gltf) => {
   gltf.scene.scale.set(2, 2, 2)
   gltf.scene.position.set(-25, 10, 0)
   // gltf.scene.rotation.y = THREE.MathUtils.degToRad(90)

@@ -19,37 +19,27 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
-const geometry = new THREE.BoxGeometry(10, 10, 10)
-const material = new THREE.MeshBasicMaterial({
-  color: 'red',
-  wireframe: true,
-})
-const cube = new THREE.Mesh(geometry, material)
-cube.position.set(0, 0, 0)
-scene.add(cube)
+import { FlyControls } from 'three/examples/jsm/controls/FlyControls.js'
 
+const FlyControl = new FlyControls(camera, render.domElement)
+FlyControl.rollSpeed = 0.1 //default 0.005
+FlyControl.autoForward = false
+// 移动控制：
+//    前进和后退：通常可以通过W键和S键（或鼠标的左键和右键）来控制。
+//    左右移动：A键和D键可以实现。
+// 旋转控制：
+//    绕Z轴旋转：Q键和E键可以实现顺时针和逆时针旋转。
+//    绕Y轴旋转：左箭头键和右箭头键可以控制。
+//    绕X轴旋转：上箭头键和下箭头键可以控制。
+// 其他功能：
+//    翻滚（Roll）：FlyControls还允许相机进行翻滚操作，这通常是通过特定的配置和输入来实现的，比如可能需要额外的按键或鼠标移动。
+// 不知道r和f是什么功能,有点像视角向上向下，y变高变低
+// 鼠标的方位能控制视角，会使视角向该方向倾斜
 
+function animate() {
+  FlyControl.update(clock.getDelta())// 加了这个可能操作之后渲染更快，时间更准确？   为了平滑动画和移动。
+}
 
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
-})
 </script>
 
 ```

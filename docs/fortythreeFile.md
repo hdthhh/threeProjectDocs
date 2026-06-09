@@ -19,8 +19,44 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
+import * as CANNON from 'cannon-es'
+
+const clock = new THREE.Clock()
+let oldElapsedTime = 0
+function animate() {
+  const elapsedTime = clock.getElapsedTime()
+  const deltaTime = elapsedTime - oldElapsedTime
+  oldElapsedTime = elapsedTime
+
+  // 施加力,模拟微风,向x反方向运动
+  qiu1body.applyForce(new CANNON.Vec3(-0.5, 0, 0), qiu1body.position)
+
+  for (const e of allqiu) {
+    e.mesh.position.copy(e.body.position)
+    // 当物体碰撞后,相撞应该不只是向下的重力作用,还应该有反向的力,使他们两碰撞后都往反方向运动(四元数)
+    e.mesh.quaternion.copy(e.body.quaternion)
+  }
+
+  // 3个参数,固定时间戳,上一步经过的时间,延时
+  // 固定的时间步长 通常1/60,每秒60帧
+  // 自上次步骤以来过去了多少时间
+  // 世界可以应用多少次选代来赶上潜在的延迟
+  world.step(1 / 60, deltaTime, 3)
+
+  // 更新球体位置
+  qiu.position.copy(qiu1body.position)
+}
+    
+const sound = new Audio('/threeProjectDocs/zhuang.mp3')
+function playsound(e) {
+  // console.log(e.contact.getImpactVelocityAlongNormal())
+  // 获取沿法线方向的冲击速度,冲击力
+  if (e.contact.getImpactVelocityAlongNormal() > 1.5) {
+    sound.currentTime=0
+    sound.play()
+  }
+}
+
 const geometry = new THREE.BoxGeometry(100, 2, 100)
 const material = new THREE.MeshStandardMaterial({
   color: '#777',
@@ -126,10 +162,78 @@ world.addBody(cube1body)
 
 
 
-// 制作一个函数,生成three的小球和cannon
-// ... more code ...
+// 制作一个函数,生成three的小球和cannon的小球
+let allqiu = []
+function createQiu(radius, position) {
+  const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(radius, 32, 16),
+    new THREE.MeshStandardMaterial({
+      metalness: 0.3,
+      roughness: 0.4,
+      // envMap:
+    }))
+  mesh.position.copy(position)
+  scene.add(mesh)
+
+  const body = new CANNON.Body({
+    mass: 1,
+    // position: new CANNON.Vec3(0, radius, 0),
+    shape: new CANNON.Sphere(radius),
+  })
+  body.position.copy(position)
+  body.addEventListener('collide', playsound)
+  world.addBody(body)
+
+  allqiu.push({ mesh, body })
+}
+// createQiu(2, { x: -8, y: 8, z: 2 })
+// createQiu(2, { x: 8, y: 8, z: 5 })
+function createBox(width,height,depth, position) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(width, height, depth),
+    new THREE.MeshStandardMaterial({
+      metalness: 0.3,
+      roughness: 0.4,
+      // envMap:
+    }))
+  mesh.position.copy(position)
+  scene.add(mesh)
+
+  const body = new CANNON.Body({
+    mass: 1,
+    // position: new CANNON.Vec3(0, radius, 0),
+    shape: new CANNON.Box(new CANNON.Vec3(width*0.5, height*0.5, depth*0.5)),
+  })
+  body.position.copy(position)
+  body.addEventListener('collide',playsound)
+  world.addBody(body)
+
+  allqiu.push({ mesh, body })
+}
+
+
+  gui.add({
+    create: () => {
+      createQiu(2, { x: 8, y: 8, z: 5 })
+    }
+  }, 'create').name('新增一个小球')
+  gui.add({
+    create: () => {
+      createBox(2, 2, 2, { x: 8, y: 8, z: 5 })
+    }
+  }, 'create').name('新增一个盒子')
+  gui.add({
+    reset: () => {
+      for (const e of allqiu) {
+        scene.remove(e.mesh)
+
+        e.body.removeEventListener('collide', playsound)
+        world.removeBody(e.body)
+      }
+    }
+  }, 'reset').name('重置')
+
 </script>
 
 ```
-
 

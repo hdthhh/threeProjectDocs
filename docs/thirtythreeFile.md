@@ -19,37 +19,23 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco/');
-loader.setDRACOLoader(dracoLoader);
+import Stats from 'three/examples/jsm/libs/stats.module.js'
+
+    
+onMounted(() => {
+  ddd.value.appendChild(stats.domElement)
+})
+function animate() {
+  stats.update()
+}
 
 const stats = new Stats()
 stats.setMode(0)
 stats.domElement.style = 'position:fixed;top:0;right:0;'
 
-const cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({ color: 'blue' }))
-scene.add(cube)
 
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
-})
+
 </script>
 
 ```
-
 

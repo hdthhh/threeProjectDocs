@@ -98,7 +98,7 @@ const cube = new THREE.Mesh(geometry, material)
 cube.position.set(0, 4, 0)
 scene.add(cube)
 
-loader.load('FlightHelmet/FlightHelmet.gltf', (gltf) => {
+loader.load('/threeProjectDocs/FlightHelmet/FlightHelmet.gltf', (gltf) => {
   scene.add(gltf.scene)
   gltf.scene.scale.set(10, 10, 10)
   gltf.scene.position.set(10,0,0)
@@ -112,12 +112,12 @@ loader.load('FlightHelmet/FlightHelmet.gltf', (gltf) => {
 // 立方体贴图
 // const cubeTextureLoader=new THREE.CubeTextureLoader()
 // const bg=cubeTextureLoader.load([
-//   '/metro_noord_4k/px.png',
-//   '/metro_noord_4k/nx.png',
-//   '/metro_noord_4k/py.png',
-//   '/metro_noord_4k/ny.png',
-//   '/metro_noord_4k/pz.png',
-//   '/metro_noord_4k/nz.png',
+//   '/threeProjectDocs/metro_noord_4k/px.png',
+//   '/threeProjectDocs/metro_noord_4k/nx.png',
+//   '/threeProjectDocs/metro_noord_4k/py.png',
+//   '/threeProjectDocs/metro_noord_4k/ny.png',
+//   '/threeProjectDocs/metro_noord_4k/pz.png',
+//   '/threeProjectDocs/metro_noord_4k/nz.png',
 // ])
 // scene.background = bg
 // scene.environment = bg
@@ -125,7 +125,7 @@ loader.load('FlightHelmet/FlightHelmet.gltf', (gltf) => {
 
 // HDR贴图,光照方面，色彩方面更强
 // const rgbeLoader = new RGBELoader()
-// rgbeLoader.load('/metro_noord_4k.hdr', (emv) => {
+// rgbeLoader.load('/threeProjectDocs/metro_noord_4k.hdr', (emv) => {
 //   emv.mapping=THREE.EquirectangularReflectionMapping
 //   scene.background = emv
 //   scene.environment = emv
@@ -133,7 +133,7 @@ loader.load('FlightHelmet/FlightHelmet.gltf', (gltf) => {
 
 
 // ldr贴图，低色彩
-// const map=textureLoader.load('/bg.jpg')
+// const map=textureLoader.load('/threeProjectDocs/bg.jpg')
 // map.mapping = THREE.EquirectangularReflectionMapping
 // map.colorSpace = THREE.SRGBColorSpace
 // scene.background = map
@@ -142,18 +142,18 @@ loader.load('FlightHelmet/FlightHelmet.gltf', (gltf) => {
 
 // 天空盒
 // const rgbeLoader = new RGBELoader()
-// rgbeLoader.load('/fireplace_4k.hdr', (emv) => {
+// rgbeLoader.load('/threeProjectDocs/fireplace_4k.hdr', (emv) => {
 //   emv.mapping=THREE.EquirectangularReflectionMapping
 //   // scene.background = emv
 //   scene.environment = emv
 
 //   // 天空盒
-//   const skybox = new GroundedSkybox(emv, 10000)
-//   // 不写高只有上一半？？？高只要有值就是有，不管是1还是10000？？？
-//   // 大小变化要靠缩放？？？
+//   // 对于需要地面与天空自然过渡的场景，GroundedSkybox实现基于环境贴图的地面投影效果。
+//   const skybox = new GroundedSkybox(emv, 10)
 //   skybox.scale.setScalar(50)
 //   // skybox.scale(50,50, -50);
 //   // skybox.position.set(0,100,0)
+//   skybox.position.set(0, 9, 0)
 //   scene.add(skybox)
 // })
 

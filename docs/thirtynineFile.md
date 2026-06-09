@@ -19,8 +19,20 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
+import * as CANNON from 'cannon-es'
+
+function animate() {
+
+  const elapsedTime = clock.getElapsedTime();
+  const deltaTime = elapsedTime - oldElapsedTime;
+  oldElapsedTime = elapsedTime;
+  //更新物理世界
+  world.step(1/60,deltaTime,3)//时间戳，刷新帧率，固定时间步长   上一次计时耗费时长     最大固定步数
+  cube.position.copy(boxBody.position) // 将物理刚体小球的位置赋值给threejs的小球
+  cube.quaternion.copy(boxBody.quaternion) // 将物理刚体小球的旋转赋值给threejs的小球
+
+}
+    
 const geometry = new THREE.BoxGeometry(4, 4, 4)
 const material = new THREE.MeshBasicMaterial({
   color: 'white',
@@ -63,27 +75,7 @@ const boxBody = new CANNON.Body({
 })
 world.addBody(boxBody)
 
-
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
-})
 </script>
 
 ```
-
 

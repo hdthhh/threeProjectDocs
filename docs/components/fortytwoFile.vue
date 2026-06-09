@@ -98,7 +98,7 @@ dracoLoader.setDecoderPath('/draco/');
 loader.setDRACOLoader(dracoLoader);
 
 
-loader.load('./modle_dangao.glb', (e, r) => {
+loader.load('/threeProjectDocs/modle_dangao.glb', (e, r) => {
   console.log(e, r, )
   let a = e.scene.children[0]
   a.position.set(0, 0, 0)

@@ -18,9 +18,39 @@ const { site, theme, page, frontmatter } = useData()
 
 ## code
 ```vue
+<template>
+  <div ref="ddd" style="width: 100%;height: 100%;"></div>
+  <button @click="steatGC" style="position: absolute;right: 0;top: 0;">{{ tf ? 'pause' : 'play' }}</button>
+  <p ref="gc" style="position: absolute;left: 0;bottom: 0;color: #ffffff;text-align: center;width: 100%;"></p>
+</template>
+
 <script setup>
-//////////////////
-// 立方体，材质，网格
+const gc = ref(null)
+const tf = ref(false)
+
+const listener = new THREE.AudioListener()
+const audio = new THREE.Audio(listener)
+const audioLoader = new THREE.AudioLoader()
+
+let duration = 0
+audioLoader.load('hxd.mp3', e => {
+  console.log(e);
+  audio.setBuffer(e)
+  audio.setLoop(true);
+  audio.setVolume(0.5);
+  duration = e.duration
+})
+
+// 渲染元素，启用动画
+let resizefn = null
+let animationId
+// 渲染元素，启用动画
+onMounted(() => {
+  playAudio()
+})
+
+
+
 const geometry = new THREE.BoxGeometry(10, 10, 10)
 const material = new THREE.MeshBasicMaterial({
   color: 'red',
@@ -36,7 +66,7 @@ let t = null
 let gclist
 
 function playAudio() {
-  axios('/Oops! （《请吃红小豆吧!》第二季op）-红小豆.lrc').then(res => {
+  axios('/threeProjectDocs/Oops! （《请吃红小豆吧!》第二季op）-红小豆.lrc').then(res => {
     console.log(res);
     gclist = createLrcObj(res.data)
     console.log(gclist)
@@ -115,26 +145,7 @@ function createLrcObj(lrc) {
   });
   return oLRC
 }
-
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('
-// ... more code ...
 </script>
 
 ```
-
 

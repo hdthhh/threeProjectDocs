@@ -155,7 +155,7 @@ const water1 = new Water(new THREE.CylinderGeometry(3.8, 3.8, 6, 64), {
   textureWidth: 512,
   textureHeight: 512,
   waterNormals: textureLoader.load(
-    "/waternormals.jpg",
+    "/threeProjectDocs/waternormals.jpg",
     (texture) => {
       texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     }

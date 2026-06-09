@@ -19,8 +19,8 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
+import { Sky } from 'three/addons/objects/Sky.js';
+
 const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128, { generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter });
 const geometry = new THREE.BoxGeometry(10, 10, 10)
 const chromeMaterial = new THREE.MeshLambertMaterial({ color: 'red', envMap: cubeRenderTarget.texture });
@@ -87,24 +87,6 @@ plane.receiveShadow = true;
 scene.add(plane);
 
 
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
-})
 </script>
 
 ```

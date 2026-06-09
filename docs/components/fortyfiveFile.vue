@@ -111,7 +111,7 @@ dm.receiveShadow = true
 scene.add(dm)
 
 
-loader.load('racing_car/scene.gltf', data => {
+loader.load('/threeProjectDocs/racing_car/scene.gltf', data => {
   console.log(data)
   console.log(data.scene)
   data.scene.position.set(0,5,0)

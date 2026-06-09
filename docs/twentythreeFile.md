@@ -19,8 +19,6 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
 const geometry = new THREE.BoxGeometry(4, 4, 4)
 const material = new THREE.MeshStandardMaterial({
   color: 'red',
@@ -75,31 +73,12 @@ scene.add(dlh2)
 // scene.background = new THREE.Color(255, 255, 255)
 
 const glftloader = new GLTFLoader()
-glftloader.load('./box.glb', (e, r) => {
+glftloader.load('/threeProjectDocs/box.glb', (e, r) => {
   console.log(e, r)
   scene.add(e.scene.children[0])
 })
 
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('resize', resizeHandler)
-})
 </script>
 
 ```
-
 

@@ -66,7 +66,7 @@ const textureLoader = new THREE.TextureLoader()
 
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setDecoderPath('/threeProjectDocs/draco/');
 loader.setDRACOLoader(dracoLoader);
 
 const stats = new Stats()

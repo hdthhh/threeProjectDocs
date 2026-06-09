@@ -43,6 +43,7 @@ let resizefn = null
 onMounted(() => {
   resizefn = () => {
     render.setSize(ddd.value.offsetWidth, ddd.value.offsetHeight)
+    render.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     camera.aspect = ddd.value.offsetWidth/ ddd.value.offsetHeight
     camera.updateProjectionMatrix()
   }

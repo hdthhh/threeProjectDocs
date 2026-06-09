@@ -94,7 +94,7 @@ function animate() {
 const radio = ref({ transform: `scalex(0)` })
 const classnames=ref('loading')
 const loadingManager = new THREE.LoadingManager(() => {
-  // 等待0.5秒，因为变化的动画是有等待0.5秒之后才运行的，这养最后一步从0.9到1.0的时候，就不会跳过这一步的动画了
+  // 等待0.5秒，因为变化的动画是有等待0.5秒之后才运行的，这样最后一步从0.9到1.0的时候，就不会跳过这一步的动画了
   gsap.delayedCall(0.5, () => {
     gsap.to(overlayMaterial.uniforms.uAlpha, { duration: 3, value: 0 })
     radio.value = {}

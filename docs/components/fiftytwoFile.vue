@@ -1,5 +1,6 @@
 <template>
   <div ref="ddd" style="width: 100%;height: 100%;"></div>
+  <div id="aaa" ref="a"></div>
 </template>
 
 <script setup>
@@ -11,6 +12,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 
 const ddd = ref(null)
+const a = ref(null)
 
 // 场景，相机，渲染器，坐标系，控制器
 const scene = new THREE.Scene()
@@ -42,13 +44,19 @@ OrbitControl.dampingFactor = 0.01// 鼠标滚动一个单位时拉伸幅度
 
 camera.position.set(10, 10, 10)
 let resizefn = null
+let gui = null
 // 渲染元素，启用动画
 onMounted(() => {
   ddd.value.appendChild(render.domElement)
   animate();
+  gui = new GUI({ container: a.value })
+  gui.addColor(meterialParameters, 'color').onChange(() => {
+    material.uniforms.uColor.value.set(meterialParameters.color)
+  })
 
   resizefn = () => {
     render.setSize(ddd.value.offsetWidth, ddd.value.offsetHeight)
+    render.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     camera.aspect = ddd.value.offsetWidth/ ddd.value.offsetHeight
     camera.updateProjectionMatrix()
   }
@@ -80,7 +88,7 @@ onUnmounted(() => {
   // render.dispose()
   window.removeEventListener('resize', resizefn)
 })
-const gui = new GUI()
+// const gui = new GUI()
 let animationId
 function animate() {
   const elapsedTime = clock.getElapsedTime()
@@ -190,9 +198,12 @@ loader.load('/threeProjectDocs/suzanne.glb', (gltf) => {
 const meterialParameters = {}
 meterialParameters.color = '#70c1ff'
 
-gui.addColor(meterialParameters, 'color').onChange(() => {
-  material.uniforms.uColor.value.set(meterialParameters.color)
-})
+
 </script>
 
-<style scoped></style>
+<style scoped>
+#aaa{
+  position: absolute;
+  top: 0;
+  right: 0;
+}</style>

@@ -61,7 +61,7 @@ export default defineConfig({
           { text: '多光源场景', link: '/twentytwoFile' },
           { text: '模型加载', link: '/twentythreeFile' },
           { text: '房间模拟', link: '/twentyfourFile' },
-          { text: '茶壶', link: '/twentyfiveFile' },
+          { text: '茶壶()', link: '/twentyfiveFile' },
           { text: '精灵动画', link: '/twentysixFile' },
           { text: '精灵和下雪模拟', link: '/twentysevenFile' },
           { text: '波浪动画模拟', link: '/twentyeightFile' },

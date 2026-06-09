@@ -128,7 +128,7 @@ dracoLoader.setDecoderPath('/draco/');
 loader.setDRACOLoader(dracoLoader);
 
 
-const sound = new Audio('/zhuang.mp3')
+const sound = new Audio('/threeProjectDocs/zhuang.mp3')
 function playsound(e) {
   // console.log(e.contact.getImpactVelocityAlongNormal())
   // 获取沿法线方向的冲击速度,冲击力

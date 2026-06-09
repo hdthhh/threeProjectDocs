@@ -19,8 +19,14 @@ const { site, theme, page, frontmatter } = useData()
 ## code
 ```vue
 <script setup>
-//////////////////
-// 立方体，材质，网格
+import { OBB } from 'three/examples/jsm/math/OBB.js';
+    
+onMounted(() => {
+  setInterval(() => {
+    loop()
+  }, 100);
+})
+    
 const geometry = new THREE.BoxGeometry(wh, 1, wh)
 const material = new THREE.MeshBasicMaterial({
   color: 'black',
@@ -32,14 +38,7 @@ scene.add(cube)
 
 scene.background = new THREE.Color('gray')
 
-// const box = new THREE.Box3();
-// box.setFromCenterAndSize(new THREE.Vector3(0, 0, 0), new THREE.Vector3(2, 1, 3));
-
-// const box3helper = new THREE.Box3Helper(box, 0xffff00)
-// scene.add(box3helper)
-
-
-// const obb = new OBB()
+const wh = 10
 
 const group = new THREE.Group()
 const material2 = new THREE.MeshBasicMaterial({ color: 'white' })
@@ -107,26 +106,7 @@ function loop() {
   // requestAnimationFrame(loop);
 }
 
-onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  scene.traverse(obj => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      if (Array.isArray(obj.material)) {
-        obj.material.forEach(m => m.dispose())
-      } else {
-        obj.material.dispose()
-      }
-    }
-    if (obj.texture) obj.texture.dispose()
-  })
-  scene.clear()
-  render.forceContextLoss()
-  if (typeof resizefn === 'function') window.removeEventListener('resize', resizefn)
-  if (typeof resizeHandler === 'function') window.removeEventListener('
-// ... more code ...
 </script>
 
 ```
-
 
