@@ -100,7 +100,7 @@ export default defineConfig({
         items: [
           { text: '物理模拟', link: '/thirtynineFile' },
           { text: '太阳系', link: '/fortyFile' },
-          { text: '第一人称pointerLockControl（fail）', link: '/fortyoneFile' },
+          { text: '第一人称pointerLockControl', link: '/fortyoneFile' },
           { text: '蛋糕模拟', link: '/fortytwoFile' },
           { text: '物理场景模拟', link: '/fortythreeFile' },
           // { text: '物理场景模拟2', link: '/fortyfourFile' },
