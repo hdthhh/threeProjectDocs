@@ -14,7 +14,18 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '文档', link: '/example' }
+      { text: '文档', link: '/example' },
+      {
+        text: '外部文档', 
+        items: [
+          { text: 'threejs官方文档', link: 'https://threejs.org/' },
+          { text: 'threejs中文文档', link: 'http://www.webgl3d.cn/' },
+          { text: 'threejs中文教程', link: 'https://techbrood.com/threejs/docs/' },
+          { text: 'polyhaven-3D资源库', link: 'https://polyhaven.com/zh' },
+          { text: 'cannon-es文档', link: 'https://pmndrs.github.io/cannon-es/docs/modules.html' },
+          { text: 'gsap文档', link: 'https://gsap.com/' },
+        ]
+      }
     ],
 
     sidebar: [
@@ -26,9 +37,10 @@ export default defineConfig({
       //   ]
       // },
       {
-        text: '简单示例',
+        text: '基础',
+        collapsed: false,
         items: [
-          { text: 'example', link: '/example' },
+          { text: '示例', link: '/example' },
           { text: '简单图形', link: '/oneFile' },
           { text: '立方体和线', link: '/twoFile' },
           { text: '立方体轮廓', link: '/threeFile' },
@@ -52,6 +64,11 @@ export default defineConfig({
           { text: '指针锁定控制', link: '/thirteenFile' },
           { text: '变换控制器', link: '/fourteenFile' },
           { text: '拖拽控制', link: '/fifteenFile' },
+        ]
+      },{
+        text: '进阶',
+        collapsed: true,
+        items: [
           { text: '动画基础', link: '/sixteenFile' },
           { text: '阴影和光照', link: '/seventeenFile' },
           { text: '天空动画', link: '/eighteenFile' },
@@ -74,7 +91,13 @@ export default defineConfig({
           { text: '水面和天空', link: '/thirtyfiveFile' },
           { text: '球形粒子', link: '/thirtysixFile' },
           { text: '场景光影', link: '/thirtysevenFile' },
-          { text: '着色器点云粒子', link: '/thirtyeightFile' },
+          { text: '粒子', link: '/thirtyeightFile' },
+          { text: '银河系', link: '/sixtynineFile' },
+        ]
+      },{
+        text: '高级',
+        collapsed: true,
+        items: [
           { text: '物理模拟', link: '/thirtynineFile' },
           { text: '太阳系', link: '/fortyFile' },
           { text: '第一人称pointerLockControl（fail）', link: '/fortyoneFile' },
@@ -84,6 +107,11 @@ export default defineConfig({
           { text: '车辆加载', link: '/fortyfiveFile' },
           { text: '场景光照渲染', link: '/fortysixFile' },
           { text: '场景和光照的模型渲染', link: '/fortysevenFile' },
+        ]
+      }, {
+        text: '着色器',
+        collapsed: true,
+        items: [
           { text: '着色器基础', link: '/fortyeightFile' },
           { text: '着色器基础图形示例', link: '/fortynineFile' },
           { text: '狂暴海面', link: '/fiftyFile' },
@@ -100,11 +128,15 @@ export default defineConfig({
           { text: '摇晃流体', link: '/sixtytwoFile' },
           { text: '切片模型', link: '/sixtythreeFile' },
           { text: '程序化地形场景', link: '/sixtyfourFile' },
+        ]
+      }, {
+        text: '探索',
+        collapsed: true,
+        items: [
           { text: '泛光后期处理', link: '/sixtyfiveFile' },
           { text: '实例化渲染', link: '/sixtysixFile' },
           { text: '加载进度和着色光影', link: '/sixtysevenFile' },
           { text: '加载进度和着色光影和点介绍', link: '/sixtyeightFile' },
-          { text: '银河系', link: '/sixtynineFile' },
           { text: '星空粒子', link: '/seventyFile' },
         ]
       }

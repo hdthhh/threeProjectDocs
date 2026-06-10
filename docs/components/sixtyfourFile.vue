@@ -373,9 +373,7 @@ scene.add(water)
 
 
 
-function createBoard(SUBTRACTION,
-  Brush,
-  Evaluator) {
+function createBoard(SUBTRACTION,Brush,Evaluator) {
   const boardFill = new Brush(new THREE.BoxGeometry(11, 2, 11))
   const boardHole = new Brush(new THREE.BoxGeometry(10, 2.1, 10))
 
@@ -393,7 +391,6 @@ function createBoard(SUBTRACTION,
   board.castShadow = true
   board.receiveShadow = true
   scene.add(board)
-
 }
 </script>
 
