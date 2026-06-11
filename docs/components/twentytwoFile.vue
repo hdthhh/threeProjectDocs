@@ -34,6 +34,7 @@ OrbitControl.dampingFactor = 0.01// 鼠标滚动一个单位时拉伸幅度
 camera.position.set(10, 10, 10)
 
 let resizefn = null
+let animationId
 // 渲染元素，启用动画
 onMounted(() => {
   ddd.value.appendChild(render.domElement)
@@ -53,7 +54,7 @@ onMounted(() => {
 
 function animate() {
   OrbitControl.update()
-  requestAnimationFrame(animate);
+  animationId=requestAnimationFrame(animate);
   render.render(scene, camera);
 }
 

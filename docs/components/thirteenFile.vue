@@ -58,8 +58,8 @@ scene.add(PointerLockControl.getObject());
 camera.position.set(10, 10, 10)
 console.log(PointerLockControl.getObject());
 
-// 渲染元素，启用动画
 let resizefn = null
+let animationId
 // 渲染元素，启用动画
 onMounted(() => {
   ddd.value.appendChild(render.domElement)
@@ -79,7 +79,7 @@ onMounted(() => {
 function animate() {
   // OrbitControl.update()
   // PointerLockControl.unlock()
-  requestAnimationFrame(animate);
+  animationId=requestAnimationFrame(animate);
   render.render(scene, camera);
 }
 

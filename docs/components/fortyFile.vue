@@ -48,6 +48,7 @@ const clock = new THREE.Clock();
 
 // 渲染元素，启用动画
 let resizefn = null
+let animationId
 
 onMounted(() => {
   ddd.value.appendChild(render.domElement)
@@ -81,7 +82,7 @@ function animate() {
   zizhuan()
 
   OrbitControl.update()
-  requestAnimationFrame(animate);
+  animationId=requestAnimationFrame(animate);
   render.render(scene, camera);
 }
 

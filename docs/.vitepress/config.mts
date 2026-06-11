@@ -78,7 +78,7 @@ export default defineConfig({
           { text: '多光源场景', link: '/twentytwoFile' },
           { text: '模型加载', link: '/twentythreeFile' },
           { text: '房间模拟', link: '/twentyfourFile' },
-          { text: '茶壶()', link: '/twentyfiveFile' },
+          { text: '茶壶', link: '/twentyfiveFile' },
           { text: '精灵动画', link: '/twentysixFile' },
           { text: '精灵和下雪模拟', link: '/twentysevenFile' },
           { text: '波浪动画模拟', link: '/twentyeightFile' },
@@ -99,14 +99,14 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: '物理模拟', link: '/thirtynineFile' },
-          { text: '太阳系', link: '/fortyFile' },
+          // { text: '太阳系', link: '/fortyFile' },
           { text: '第一人称pointerLockControl', link: '/fortyoneFile' },
           { text: '蛋糕模拟', link: '/fortytwoFile' },
           { text: '物理场景模拟', link: '/fortythreeFile' },
           // { text: '物理场景模拟2', link: '/fortyfourFile' },
           { text: '车辆加载', link: '/fortyfiveFile' },
           { text: '场景光照渲染', link: '/fortysixFile' },
-          { text: '场景和光照的模型渲染', link: '/fortysevenFile' },
+          // { text: '场景和光照的模型渲染', link: '/fortysevenFile' },
         ]
       }, {
         text: '着色器',

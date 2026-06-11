@@ -43,9 +43,9 @@ OrbitControl.dampingFactor = 0.01// 鼠标滚动一个单位时拉伸幅度
 
 camera.position.set(20, 20, 20)
 
-// 渲染元素，启用动画
 let resizefn = null
 let gui
+let animationId
 // 渲染元素，启用动画
 onMounted(() => {
   gui = new GUI({ container: a.value })
@@ -108,7 +108,7 @@ function animate() {
 
 
   OrbitControl.update()
-  requestAnimationFrame(animate);
+  animationId=requestAnimationFrame(animate);
   render.render(scene, camera);
 }
 

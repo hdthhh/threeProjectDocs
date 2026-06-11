@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "build": "vitepress --max_old_space_size=4096  build docs",
     "preview": "vitepress preview docs"
   },
   "packageManager": "npm@10.9.4",

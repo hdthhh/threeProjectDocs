@@ -88,7 +88,7 @@ onUnmounted(() => {
   // render.dispose()
   window.removeEventListener('resize', resizefn)
 
-  document.querySelector('#top').remove(displacement.canvas)
+  if(document.querySelector('#top'))document.querySelector('#top').remove(displacement.canvas)
   window.removeEventListener("pointermove", shubiaofn)
 })
 // const gui = new GUI()

@@ -93,7 +93,7 @@ lamber.position.set(-7, 3, 0)
 scene.add(lamber)
 
 
-textureLoader.load('./bg.jpeg', bg => {
+textureLoader.load('/threeProjectDocs/bg.jpeg', bg => {
   bg.mapping = THREE.EquirectangularReflectionMapping;// 球形映射，必填，跟随视角旋转
   scene.background = bg
   scene.environment = bg

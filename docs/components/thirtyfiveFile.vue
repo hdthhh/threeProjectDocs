@@ -40,8 +40,8 @@ OrbitControl.dampingFactor = 0.01// 鼠标滚动一个单位时拉伸幅度
 
 camera.position.set(10, 10, 10)
 
-// 渲染元素，启用动画
 let resizefn = null
+let animationId
 let gui
 // 渲染元素，启用动画
 onMounted(() => {
@@ -87,7 +87,7 @@ onUnmounted(() => {
 
 function animate() {
   OrbitControl.update()
-  requestAnimationFrame(animate);
+  animationId=requestAnimationFrame(animate);
   render.render(scene, camera);
   // 让水流动
   water.material.uniforms["time"].value += 1.0 / 60;
